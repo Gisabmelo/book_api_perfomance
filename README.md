@@ -39,7 +39,6 @@ book_api_perfomance/
 ## 🛠️ Tecnologias Utilizadas
 
 - Node.js + Express  
-- Banco de dados (SQLite ou outro configurado)  
 - Testes de performance: k6  
 - Autenticação: JWT (JSON Web Token)  
 - Documentação interativa (Swagger, se implementado)  
@@ -73,7 +72,7 @@ Exemplo de execução:
 k6 run tests/books-list_auth_performance.js
 
 
-Você também encontrará cenários de carga com stages (subida/descida), cadastro de livros e trocas.
+
 
 🌐 Endpoints Principais
 
@@ -92,8 +91,6 @@ POST /api/books/:id/exchange — troca de livro (requer token)
 A autenticação deve ser feita via header Authorization: Bearer {token}.
 
 Ao trocar um livro, a quantidade disponível deve diminuir em 1 e não pode ficar negativa.
-
-Certifique-se de que o banco de dados está limpo ou com dados válidos para os testes de performance.
 
 O relatório de performance (html-report.html) pode ser gerado após execução dos scripts de k6 e visualizado no navegador.
 
