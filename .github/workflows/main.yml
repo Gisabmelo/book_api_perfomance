@@ -28,13 +28,24 @@ jobs:
       - name: Instalar o k6
         uses: grafana/setup-k6-action@v1
 
-      - name: Rodar testes de performance (GET Books)
+
+      - name: Rodar testes de performance (GET Readers)
         run: |
-          k6 run tests/books_list.js
+          k6 run tests/reader-register.js
+          
+
+      - name: Rodar testes de performance (GET Users)
+        run: |
+          k6 run tests/login_valido.test.js
+
 
       - name: Rodar testes de performance (POST Books)
         run: |
-          k6 run tests/book_register.js
+          k6 run tests/book_register.js    
+
+      - name: Rodar testes de performance (GET Books)
+        run: |
+          k6 run tests/books_list.js
 
       - name: Rodar testes de performance (Exchange Books)
         run: |
