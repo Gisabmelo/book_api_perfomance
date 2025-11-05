@@ -36,7 +36,7 @@ jobs:
 
       - name: Rodar testes de performance (GET Users)
         run: |
-          k6 run tests/login_valido.test.js
+          k6 run tests/login_valido.tests.js
 
 
       - name: Rodar testes de performance (POST Books)
