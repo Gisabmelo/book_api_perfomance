@@ -13,8 +13,8 @@ jobs:
   k6_test:
     runs-on: ubuntu-latest
     container:
-  image: loadimpact/k6
-  options: --memory=2g --cpus=2
+      image: loadimpact/k6
+      options: --memory=2g --cpus=2
 
     env:
       BASE_URL: ${{ secrets.BASE_URL }}  # URL da API
