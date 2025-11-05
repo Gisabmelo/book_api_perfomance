@@ -33,6 +33,12 @@ export default function () {
       'status é 200': (r) => r.status === 200,
       'retornou lista de livros': (r) => Array.isArray(r.json()),
     });
+
+    // Validação 401 - Sem autenticação
+    const res401 = http.get(url);
+    check(res401, {
+      'Status é 401 (Unauthorized)': (r) => r.status === 401,
+    });
   
     sleep(1); // pausa entre requisições
   }
