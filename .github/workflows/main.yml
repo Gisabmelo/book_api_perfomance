@@ -1,0 +1,45 @@
+name: Performance Tests (k6)
+
+on:
+  push:
+    branches:
+      - main
+      - segunda-branch
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  k6_test:
+    runs-on: ubuntu-latest
+
+    env:
+      BASE_URL: ${{ secrets.BASE_URL }}  # URL da API
+      K6_WEB_DASHBOARD: true             # Gera dashboard
+      K6_WEB_DASHBOARD_EXPORT: report.html
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar o k6
+        uses: grafana/setup-k6-action@v1
+
+      - name: Rodar testes de performance (GET Books)
+        run: |
+          k6 run tests/books_list.js
+
+      - name: Rodar testes de performance (POST Books)
+        run: |
+          k6 run tests/book_register.js
+
+      - name: Rodar testes de performance (Exchange Books)
+        run: |
+          k6 run tests/books_exchange.js
+
+
+      - name: Upload do relatório gerado (HTML)
+        uses: actions/upload-artifact@v3
+        with:
+          name: k6-performance-report
+          path: report.html
