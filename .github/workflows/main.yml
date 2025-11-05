@@ -35,7 +35,7 @@ jobs:
 
       - name: Rodar testes de performance (GET Readers)
         run: |
-          k6 run tests/reader-register.js
+          k6 run tests/reader-register.tests.js
           
 
       - name: Rodar testes de performance (GET Users)
@@ -45,11 +45,11 @@ jobs:
 
       - name: Rodar testes de performance (POST Books)
         run: |
-          k6 run tests/book_register.js    
+          k6 run tests/book_register.tests.js    
 
       - name: Rodar testes de performance (GET Books)
         run: |
-          k6 run tests/books_list.js
+          k6 run tests/books_list.tests.js
 
   
 
