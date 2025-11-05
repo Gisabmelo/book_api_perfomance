@@ -18,6 +18,23 @@ export function obterToken() {
         };
       
         const res = http.post(url, payload, params);
-        return res.json('token')   // obtem o token a partir do json de resposta
+        
+        // Validações para resposta vazia ou nula
+        if (!res || res.status !== 200) {
+          console.error('Erro ao obter token: status', res ? res.status : 'sem resposta');
+          console.error('Body da resposta:', res ? res.body : 'vazio');
+          return null;
+        }
+        
+        const token = res.json('token');
+        
+        if (!token || token === '' || token === null || token === undefined) {
+          console.error('Token vazio ou nulo na resposta');
+          console.error('Resposta completa:', res.body);
+          return null;
+        }
+        
+        return token;
 
 }
+
